@@ -8,37 +8,118 @@
     <body>
         <h1>Contact me</h1>
 
-        <a target="_blank" href="tel:+966558762415">
-            <img title="Call me" width="150" src="img/phone.jpg">
-        </a>
-
-        <a target="_blank" href="mailto:abdullaham1422@gmail.com">
-            <img title="Email" width="150" src="img/email.jpg">
-        </a>
-
-        <br>
+        <figure>    
+            <a target="_blank" href="https://www.linkedin.com/feed/">
+                <img title="linkedin Account" width="100" src="assets/lin.png">
+            </a>
+    
+            <a target="_blank" href="https://twitter.com/aamhaamm">
+                <img title="X Account" width="100" src="assets/x.jpg" >
+            </a> 
+    
+            <a target="_blank" href="https://github.com/aamhaamm">
+                <img title="GitHub" width="100" src="assets/git.jpg" >
+            </a>
+        </figure>
         
-        <a target="_blank" href="https://www.linkedin.com/feed/">
-            <img title="linkedin Account" width="150" src="img/lin.png">
-        </a>
-
-        <a target="_blank" href="https://twitter.com/aamhaamm">
-            <img title="X Account" width="150" src="img/x.jpg" >
-        </a> 
 
         <br><br>
 
-        <form>
-            <div>
-                <label for="text">Text to me</label>
-                <input id="text" type="text">
-                <input type="submit" value="Send">
-            </div>
+        <form action="thanksPage.html">
+
+            <fieldset>
+
+                <legend>Would you like to work with me?</legend>
+
+                <div>
+                    <label for="text">Name</label>
+                    <input id="text" type="text" required>
+                </div>
+    
+                <div>
+                    <br>
+                    <label for="Email"> Email </label>
+                    <input id="Email" type="email" placeholder="********@gmail.com" required>
+                </div>
+    
+                <div>
+                    <br>
+                    <label for="PhoneNumber"> Phone Number </label>
+                    <input id="PhoneNumber" type="number" value="966">
+                </div>
+    
+                <div>
+                    <br>
+                    <label for="birthday"> Date of birth </label>
+                    <input id="birthday" type="date">
+                </div>
+
+                <div>
+                    <h4>Gender</h4>
+                    <input id="Male" type="radio" name="Gender" required>
+                    <label for="Male"> Male </label>
+                </div>
+
+                <div>
+                    <input id="Female" type="radio" name="Gender">
+                    <label for="Female"> Female </label>
+                </div>
+    
+                <div>
+                    <br>
+                    <label for="image"> Your personal photo (optional) </label>
+                    <input id="image" type="file">
+                </div>
+
+                <div>
+                    <h4>What languages do you speak ?</h4>
+                    <input checked id="Arabic" type="checkbox" name="languages">
+                    <label for="Arabic"> Arabic </label>
+
+                    <input id="English" type="checkbox" name="languages">
+                    <label for="English"> English </label>
+
+                    <input id="French" type="checkbox" name="languages">
+                    <label for="French"> French </label>
+
+                    <input id="Spanish" type="checkbox" name="languages">
+                    <label for="Spanish"> Spanish </label>
+                </div>
+
+                <div>
+                    <h4>What programming languages do you master? ?</h4>
+                    <input id="Html" type="checkbox" name="programm">
+                    <label for="Html"> Html </label>
+                
+                    <input id="Python" type="checkbox" name="programm">
+                    <label for="Python"> Python </label>
+              
+                    <input id="Java" type="checkbox" name="programm">
+                    <label for="Java"> Java </label>
+             
+                    <input id="C++" type="checkbox" name="programm">
+                    <label for="C++"> C++ </label>
+             
+                    <input id="Others" type="checkbox" name="programm">
+                    <label for="Others"> Others </label>
+                </div>
+
+                <div>
+                    <br>
+                    <label for="url"> Your GitHub page? </label>
+                    <input id="url" type="url" value="https://github.com/" required>
+                </div>
+                
+                <div>
+                    <br>
+                    <a href="index.html">Back</a>
+                    <input type="reset" value="clear">
+                    <input type="submit" value="send">
+                </div>
+
+            </fieldset>
+
         </form>
-
-        <br><br>
-
-        <a href="index.html">Back</a>
 
     </body>
     
