@@ -1,12 +1,62 @@
-body section h1{
+body header h1{
     color: brown;
 }
 
-body section{
-    background-color: #cac5b8;
+body header{
+    background-color: #bde0fe;
 }
 
 body{
-    background-color: #87837b;
+    background-color: #8ecae6;
 }
 
+#experience{
+    margin-right: 30px;
+}
+
+#contact{
+    margin-right: 20px;
+}
+
+/* #self{
+    margin-top: 200px;
+} */
+
+#myimg{
+    margin-top: 50px;
+    margin-left: 400px;
+}
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#figure{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+.top {
+    background-color: #EB5406; 
+}
+
+em {
+    background-color: blue;
+}
+
+#the_most_important {
+    text-transform: uppercase;
+    background-color: gold;
+}
