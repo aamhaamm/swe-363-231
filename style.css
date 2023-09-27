@@ -1,4 +1,58 @@
+/* Animation */
+
+.loading {
+    position: fixed; /* Fixed position */
+    top: 0; /* Full screen */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex; /* Centered layout */
+    align-items: center;
+    justify-content: center;
+    background-color: white; /* Loading background color */
+    animation: hideLoading 3s forwards 3s; /* Animation to fade out the loading div */
+    z-index: 1000; /* Place it above all other content */
+}
+
+.content {
+    opacity: 0; /* Initially hidden */
+    animation: showContent 1s forwards 2s; /* Animation to fade in the content */
+}
+
+@keyframes hideLoading {
+    to {
+        opacity: 0; /* Fade out to invisible */
+        visibility: hidden; /* Hide the loading div */
+    }
+}
+
+@keyframes showContent {
+    to {
+        opacity: 1; /* Fade in to visible */
+    }
+}
+
+/*  The header in index.html */
+
+body {
+    margin: 0;
+}
+
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+#header_pages{
+    margin-top: -25px;
+    height: 60px;
+}
+
 body header h1{
+    margin-left: 10px ;
+    margin-right: 10px;
     color: brown;
 }
 
@@ -10,28 +64,48 @@ body{
     background-color: #8ecae6;
 }
 
-#experience{
-    margin-right: 30px;
+#experience_link{
+    margin-right: 45px;
+    border-radius: 70px;
 }
 
-#contact{
-    margin-right: 20px;
+.transition-button {
+    background-color: yellow; 
+    padding: 5px 5px; 
+    transition: background-color 1.5s ease; 
+  }
+  
+  .transition-button:hover {
+    background-color: red; 
+  }
+
+#contact_link{
+    margin-right: 35px;
+    border-radius: 70px;
 }
 
-/* #self{
-    margin-top: 200px;
-} */
-
-#myimg{
-    margin-top: 50px;
-    margin-left: 400px;
+#ِarabic_link{
+    margin-right: 25px;
+    border-radius: 70px;
 }
 
-#header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#english_link{
+    margin-right: 25px;
+    margin-left: 25px;
+    border-radius: 70px;
+
 }
+
+#thankspage_link{
+    border-radius: 70px;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+/*  The body in index.html */
 
 #figure{
     display: flex;
@@ -39,10 +113,84 @@ body{
     justify-content: space-between;
 }
 
-a {
-    color: green;
-    text-decoration: none;
+#myimg{
+    margin: 50px 50px 0px 90px;
 }
+
+em {
+    background-color: lightgreen;
+}
+
+#the_most_important {
+    text-transform: uppercase;
+    background-color: gold;
+}
+
+
+/*  The body in Experience.html */
+
+h1{
+    color: brown;
+    text-align: center; 
+}
+
+#back{
+     position: relative;
+     top: -50px; 
+     left: 20px;  
+     border-radius: 70px;
+}
+
+#back_ar{
+    position: relative;
+    top: -50px; 
+    left: -20px;  
+    border-radius: 70px;
+}
+
+#my_experience{
+    display: flex;
+    justify-content: space-between;
+}
+
+#data{
+    width: 50%;
+    margin-left: 20px;
+}
+
+#certificate_data{
+    position: relative;
+     top: -38px; 
+     left: 70px; 
+}
+
+#certificate_data_ar{
+    position: relative;
+     top: -45px; 
+     left: -355px; 
+}
+
+#kaust{
+    width: 50%;
+    margin-left: 20px;
+}
+
+#certificate_kaust{
+    position: relative;
+     top: -38px; 
+     left: 400px; 
+}
+
+#certificate_kaust_ar{
+    position: relative;
+     top: -45px; 
+     left: -265px; 
+}
+
+#my_courses{
+    margin: 0 auto ;
+}
+
 
 th {
     text-transform: uppercase;
@@ -52,14 +200,6 @@ th {
     background-color: #EB5406; 
 }
 
-em {
-    background-color: blue;
-}
-
-#the_most_important {
-    text-transform: uppercase;
-    background-color: gold;
-}
 
 h1 {
     font-family: sans-serif;
@@ -69,7 +209,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: capitalize;
 }
 
-/* h1 + p::first-letter {
+h2 + p::first-letter {
     font-size: x-large;
 }
 
@@ -102,7 +242,7 @@ tbody tr:nth-child(even) {
 }
 
 ::selection {
-    background-color: lightskyblue;  
+    background-color: rgb(123, 255, 0);  
 }
 
 body a:not(nav a):hover {
@@ -119,5 +259,5 @@ input[type="text"] {
 
 input[name="message"] {
     height: 50px;
-} */
+}
 
