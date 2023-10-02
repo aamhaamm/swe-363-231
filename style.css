@@ -36,6 +36,7 @@
 
 body {
     margin: 0;
+    background-color: #8ecae6;
 }
 
 #header{
@@ -43,28 +44,23 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 60px;
+    background-color: #bde0fe;
 }
 
 #header_pages{
-    margin-top: -25px;
+    margin-top: -20px;
     height: 60px;
+    background-color: #bde0fe;
 }
 
-body header h1{
+#title_main_pages , #title_main_pages_ar{
     margin-left: 10px ;
     margin-right: 10px;
     color: brown;
 }
 
-body header{
-    background-color: #bde0fe;
-}
 
-body{
-    background-color: #8ecae6;
-}
-
-#experience_link{
+#experience_link , #experience_link_ar{
     margin-right: 45px;
     border-radius: 70px;
 }
@@ -79,7 +75,7 @@ body{
     background-color: red; 
   }
 
-#contact_link{
+#contact_link , #contact_link_ar{
     margin-right: 35px;
     border-radius: 70px;
 }
@@ -115,6 +111,7 @@ a {
 
 #myimg{
     margin: 50px 50px 0px 90px;
+    background-color: rgba(255, 255, 255, 0.5); 
 }
 
 em {
@@ -126,10 +123,16 @@ em {
     background-color: gold;
 }
 
+/* This for 1st exercise css4*/
+#copy{
+    margin-left: 10px;
+    float: left; /* or 'left' to align it to the left side */
+}
+
 
 /*  The body in Experience.html */
 
-h1{
+#title_pages{
     color: brown;
     text-align: center; 
 }
@@ -153,15 +156,23 @@ h1{
     justify-content: space-between;
 }
 
-#data{
+#data, #data_ar{
     width: 50%;
     margin-left: 20px;
 }
+
+
 
 #certificate_data{
     position: relative;
      top: -38px; 
      left: 70px; 
+}
+
+#date_data{
+    position: relative;
+     top: -38px; 
+     left: 390px; 
 }
 
 #certificate_data_ar{
@@ -170,7 +181,13 @@ h1{
      left: -355px; 
 }
 
-#kaust{
+#date_data_ar{
+    position: relative;
+     top: -45px; 
+     left: -375px; 
+}
+
+#kaust, #kaust_ar{
     width: 50%;
     margin-left: 20px;
 }
@@ -261,3 +278,178 @@ input[name="message"] {
     height: 50px;
 }
 
+
+/* Style for mobile */
+@media (min-width: 0px) and (max-width: 769px) {
+
+    body {
+        margin: 0;
+    }
+
+    #header{
+        margin-right: -68px;
+        height: 60px;
+    }
+
+    #title_main_pages {
+        margin-left: 5px ;
+        margin-right: 5px;
+        color: brown;
+        font-size: larger;
+    }
+
+    #title_main_pages_ar{
+        margin-left: 5px ;
+        margin-right: 10px;
+        color: brown;
+        font-size: large;
+        position: relative;
+        right: 70px;
+    }
+    
+    #experience_link{
+        margin-right: 10px;
+        border-radius: 70px;
+        font-size: medium;
+    }
+
+    #experience_link_ar{
+        margin-right: 10px;
+        font-size: medium;
+    }
+    
+    #contact_link{
+        margin-right: 10px;
+        border-radius: 70px;
+        font-size: medium;
+    }
+
+    #contact_link_ar{
+        margin-right: 10px;
+        font-size: medium;
+    }
+    
+    #ِarabic_link{
+        margin-right: 10px;
+        border-radius: 70px;
+        font-size: medium;
+    }
+
+    #english_link{
+        margin-right: 10px;
+        margin-left: 5px;
+        font-size: medium;
+    }
+
+    #figure{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+
+    #self{
+        position: relative;
+        left: 35px;
+    }
+
+    #self_ar{
+        position: relative;
+        left: -15px;
+    }
+
+    #myimg{
+        margin: 50px 50px 0px 90px;
+        background-color: rgba(255, 255, 255, 0.5); 
+    }
+
+    #title_pages{
+        color: brown;
+        text-align: center; 
+        position: relative;
+        top: 15px; 
+    }
+
+    #header_pages{
+        margin-top: -22px;
+        height: 60px;
+        background-color: #bde0fe;
+    }
+
+    #back{
+        position: relative;
+        top: -35px; 
+        left: 20px;  
+        border-radius: 70px;
+   }
+
+   #my_experience{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+    #data{
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    #data_ar{
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    #certificate_data{
+        position: relative;
+        top: -38px; 
+        left: 180px; 
+    }
+
+    #date_data{
+        position: relative;
+         top: -18px; 
+         left: 190px; 
+    }
+
+    #certificate_data_ar{
+        position: relative;
+        top: -42px; 
+        left: -210px; 
+    }
+
+    #date_data_ar{
+        position: relative;
+         top: 0px; 
+         left: -150px; 
+    }
+    
+    #kaust{
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    #kaust_ar{
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    #certificate_kaust{
+        position: relative;
+        top: -38px; 
+        left: 285px; 
+    }
+
+    #certificate_kaust_ar{
+        position: relative;
+        top: -22px; 
+        left: -150px; 
+    }
+
+    #my_courses{
+        margin: 0 auto ;
+    }
+
+
+}
