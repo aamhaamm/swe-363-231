@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+ 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+
+    <title>Document</title>
+
+    <style>
+
+        body {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            height: 100vh;
+
+            
+
+        }
+
+ 
+
+ 
+
+        h1 {
+
+            margin-bottom: 0px;
+
+        }
+
+ 
+
+        .cell {
+
+            font-family: 'Shantell Sans', cursive;
+
+            font-size: larger;
+
+            font-weight: 500;
+
+            background-color: beige;
+
+            width: 100px;
+
+            height: 100px;
+
+            border: 4px solid white;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            cursor: pointer;
+
+        }
+
+ 
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns: auto auto auto;
+
+        }
+
+ 
+
+        code {
+
+            color: blueviolet;
+
+        }
+
+ 
+
+        #reset-btn {
+
+            background-color: rgb(145, 53, 231);
+
+            color: white;
+
+            border-radius: 12px;
+
+            padding: 5px 25px;
+
+            margin-top: 10px;
+
+            transition: all 0.5s ease;
+
+            cursor: pointer;
+
+            border: none;
+
+        }
+
+ 
+
+        #reset-btn:hover {
+
+            background-color: rgb(178, 128, 226);
+
+            transform: scale(1.05);
+
+        }
+
+    </style>
+
+</head>
+
+ 
+
+<body>
+
+    <h1 id="turn">
+
+        Now it's is <span>X</span> turn
+
+    </h1>
+
+    <p>Use <code>Space</code> to select & <code>Arrows</code> to move</p>
+
+    <!-- Board -->
+
+    <div class="board">
+
+        <div class="grid">
+
+            <div class="cell" value="1"></div>
+
+            <div class="cell" value="2"></div>
+
+            <div class="cell" value="3"></div>
+
+            <div class="cell" value="4"></div>
+
+            <div class="cell" value="5"></div>
+
+            <div class="cell" value="6"></div>
+
+            <div class="cell" value="7"></div>
+
+            <div class="cell" value="8"></div>
+
+            <div class="cell" value="9"></div>
+
+        </div>
+
+    </div>
+
+ 
+
+    <button id="reset-btn">Reset</button>
+
+ 
+
+ 
+
+    <script>
+
+        let gridItems = document.getElementsByClassName("cell");
+
+        let turn = "X";
+
+        let isFinished = false;
+
+        let boardArray = [
+
+                        "0", "1", "2",
+
+                        "3", "4", "5",
+
+                        "6", "7", "8"
+
+                        ];
+
+ 
+
+        
+
+        for (const item of gridItems) {
+
+            item.addEventListener("click", function () {
+
+                if (isFinished || item.innerHTML !== "") {
+
+                    return;
+
+                }
+
+                item.style.background = 'blanchedalmond';
+
+                let value = item.getAttribute("value");
+
+                item.innerHTML = turn;
+
+                boardArray[value - 1] = turn;
+
+                checkWinner();
+
+                if (!isFinished) {
+
+                    turn = turn === "X" ? "O" : "X";
+
+                    document.getElementById("turn").textContent = `Now it's is ${turn} turn`;
+
+                }
+
+            });
+
+ 
+
+ 
+
+            item.addEventListener("mouseover", function(){
+
+                if (item.innerHTML === "") {
+
+                    item.style.background = "blanchedalmond";
+
+                }
+
+            });
+
+ 
+
+            item.addEventListener("mouseleave", function(){
+
+                if (item.innerHTML === "") {
+
+                    item.style.background = "beige";
+
+                }
+
+            });
+
+        }
+
+ 
+
+        function checkWinner() {
+
+            let turnLetter = document.getElementById("turn");
+
+            if (
+
+                (boardArray[0] == boardArray[1] && boardArray[1] == boardArray[2]) ||
+
+                (boardArray[3] == boardArray[4] && boardArray[4] == boardArray[5]) ||
+
+                (boardArray[6] == boardArray[7] && boardArray[7] == boardArray[8]) ||
+
+ 
+
+                (boardArray[0] == boardArray[3] && boardArray[3] == boardArray[6]) ||
+
+                (boardArray[1] == boardArray[4] && boardArray[4] == boardArray[7]) ||
+
+                (boardArray[2] == boardArray[5] && boardArray[5] == boardArray[8]) ||
+
+ 
+
+                (boardArray[0] == boardArray[4] && boardArray[4] == boardArray[8]) ||
+
+                (boardArray[2] == boardArray[4] && boardArray[4] == boardArray[6])
+
+                ) {
+
+                turnLetter.innerHTML = `The Winner is ${turn}`;
+
+                isFinished = true;
+
+            }
+
+ 
+
+            let isDraw = true;
+
+            for (const square of boardArray) {
+
+                if (square !== "X" && square !== "O") {
+
+                    isDraw = false;
+
+                }
+
+            }
+
+            if (isDraw) {
+
+                isFinished = true;
+
+                turnLetter.innerHTML = "Draw";
+
+            }
+
+        }
+
+ 
+
+        document.getElementById("reset-btn").addEventListener("click", function () {
+
+            resetGame();
+
+        });
+
+ 
+
+        function resetGame() {
+
+            for (const item of gridItems) {
+
+                item.innerHTML = "";
+
+                item.style.background = 'beige';
+
+                
+
+            }
+
+            boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+
+            isFinished = false;
+
+            turn = "X";
+
+            document.getElementById("turn").innerHTML = `Now it's is ${turn} turn`;
+
+        }
+
+ 
+
+    </script>
+
+</body>
+
+ 
+
+</html>

@@ -93,6 +93,16 @@ body {
 }
 
 #thankspage_link{
+    position: relative;
+    top: 10px;
+    left: 475px; 
+    border-radius: 70px;
+}
+
+#thankspage_link_ar{
+    position: relative;
+    top: 10px;
+    right: 600px; 
     border-radius: 70px;
 }
 
@@ -339,6 +349,20 @@ input[name="message"] {
         margin-right: 10px;
         margin-left: 5px;
         font-size: medium;
+    }
+
+    #thankspage_link{
+        position: relative;
+        top: 10px;
+        left: 180px; 
+        border-radius: 70px;
+    }
+    
+    #thankspage_link_ar{
+        position: relative;
+        top: 10px;
+        right: 180px; 
+        border-radius: 70px;
     }
 
     #figure{
