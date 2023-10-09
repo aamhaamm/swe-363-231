@@ -8,88 +8,89 @@
     <title>Tic Tac Toe</title>
 
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-            font-family: 'Shantell Sans', cursive;
-        }
+    body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: 'Shantell Sans', cursive;
+    }
 
-        h1 {
-            margin-bottom: 10px;
-            color: #4a4a4a;
-        }
+    h1 {
+        margin-bottom: 10px;
+        color: #4a4a4a;
+    }
 
-        p {
-            margin-top: 5px;
-            color: #7a7a7a;
-        }
+    p {
+        margin-top: 5px;
+        color: #7a7a7a;
+    }
 
-        .cell {
-            font-size: larger;
-            font-weight: 500;
-            background-color: #ffffff;
-            width: 100px;
-            height: 100px;
-            border: 2px solid red;
-            border-radius: 12px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
+    .cell {
+        font-size: larger;
+        font-weight: 500;
+        background-color: #ffffff;
+        width: 100px;
+        height: 100px;
+        border: 2px solid red;
+        border-radius: 12px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-        .cell:hover {
-            background-color: #f0f0f0;
-        }
+    .cell:hover {
+        background-color: #f0f0f0;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, auto);
-            gap: 5px;
-        }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 5px;
+    }
 
-        code {
-            color: #d05ce3;
-        }
+    code {
+        color: #d05ce3;
+    }
 
-        #reset-btn {
-            background-color: #673ab7;
-            color: white;
-            border-radius: 12px;
-            padding: 10px 25px;
-            margin-top: 20px;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s ease-in-out;
-        }
+    #reset-btn {
+        background-color: #673ab7;
+        color: white;
+        border-radius: 12px;
+        padding: 10px 25px;
+        margin-top: 20px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-        #reset-btn:hover {
-            background-color: #9575cd;
-        }
+    #reset-btn:hover {
+        background-color: #9575cd;
+    }
+
     </style>
 </head>
 
 <body>
     <h1 id="turn">Now it's <span>X</span>'s turn</h1>
-    <p>Use <code>Space</code> to select & <code>Arrows</code> to move</p>
+    <p>Use <code>Space</code> to select & <code>Tab</code> to navigate between cells</p>
     <div class="board">
         <div class="grid">
-            <div class="cell" value="1"></div>
-            <div class="cell" value="2"></div>
-            <div class="cell" value="3"></div>
-            <div class="cell" value="4"></div>
-            <div class="cell" value="5"></div>
-            <div class="cell" value="6"></div>
-            <div class="cell" value="7"></div>
-            <div class="cell" value="8"></div>
-            <div class="cell" value="9"></div>
+            <div class="cell" value="1" tabindex="1"></div>
+            <div class="cell" value="2" tabindex="2"></div>
+            <div class="cell" value="3" tabindex="3"></div>
+            <div class="cell" value="4" tabindex="4"></div>
+            <div class="cell" value="5" tabindex="5"></div>
+            <div class="cell" value="6" tabindex="6"></div>
+            <div class="cell" value="7" tabindex="7"></div>
+            <div class="cell" value="8" tabindex="8"></div>
+            <div class="cell" value="9" tabindex="9"></div>
         </div>
     </div>
     <button id="reset-btn">Reset</button>
@@ -98,81 +99,46 @@
         let gridItems = document.getElementsByClassName("cell");
         let turn = "X";
         let isFinished = false;
-        let boardArray = [
-                        "0", "1", "2",
-
-                        "3", "4", "5",
-
-                        "6", "7", "8"
-
-                        ];
+        let boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
         for (const item of gridItems) {
+            item.addEventListener("keydown", function (e) {
+                if (e.key === " ") {
+                    handleTurn(item);
+                }
+            });
             item.addEventListener("click", function () {
-                if (isFinished || item.innerHTML !== "") {
-
-                    return;
-
-                }
-                item.style.background = 'blanchedalmond';
-                let value = item.getAttribute("value");
-                item.innerHTML = turn;
-                boardArray[value - 1] = turn;
-
-                checkWinner();
-
-                if (!isFinished) {
-                    turn = turn === "X" ? "O" : "X";
-                    document.getElementById("turn").textContent = `Now it's is ${turn} turn`;
-                }
-
-            });
-
-            item.addEventListener("mouseover", function(){
-                if (item.innerHTML === "") {
-                    item.style.background = "blanchedalmond";
-                }
-            });
-
-
-            item.addEventListener("mouseleave", function(){
-                if (item.innerHTML === "") {
-                    item.style.background = "beige";
-                }
+                handleTurn(item);
             });
         }
 
- 
+        function handleTurn(item) {
+            if (isFinished || item.innerHTML !== "") return;
+            item.style.background = 'blanchedalmond';
+            let value = item.getAttribute("value");
+            item.innerHTML = turn;
+            boardArray[value - 1] = turn;
+            checkWinner();
+            if (!isFinished) {
+                turn = turn === "X" ? "O" : "X";
+                document.getElementById("turn").textContent = `Now it's is ${turn} turn`;
+            }
+        }
+
         function checkWinner() {
-
             let turnLetter = document.getElementById("turn");
-            if (
-                (boardArray[0] == boardArray[1] && boardArray[1] == boardArray[2]) ||
-                (boardArray[3] == boardArray[4] && boardArray[4] == boardArray[5]) ||
-                (boardArray[6] == boardArray[7] && boardArray[7] == boardArray[8]) ||
-
-                (boardArray[0] == boardArray[3] && boardArray[3] == boardArray[6]) ||
-                (boardArray[1] == boardArray[4] && boardArray[4] == boardArray[7]) ||
-                (boardArray[2] == boardArray[5] && boardArray[5] == boardArray[8]) ||
-
-                (boardArray[0] == boardArray[4] && boardArray[4] == boardArray[8]) ||
-                (boardArray[2] == boardArray[4] && boardArray[4] == boardArray[6])
-                ) {
-
+            if (checkLine(0, 1, 2) || checkLine(3, 4, 5) || checkLine(6, 7, 8) || checkLine(0, 3, 6) || checkLine(1, 4, 7) || checkLine(2, 5, 8) || checkLine(0, 4, 8) || checkLine(2, 4, 6)) {
                 turnLetter.innerHTML = `The Winner is ${turn}`;
                 isFinished = true;
             }
-
-            let isDraw = true;
-            for (const square of boardArray) {
-                if (square !== "X" && square !== "O") {
-                    isDraw = false;
-                }
-            }
-            if (isDraw) {
+            if (boardArray.every(cell => cell === "X" || cell === "O")) {
                 isFinished = true;
                 turnLetter.innerHTML = "Draw";
             }
+        }
+
+        function checkLine(a, b, c) {
+            return boardArray[a] === turn && boardArray[b] === turn && boardArray[c] === turn;
         }
 
         document.getElementById("reset-btn").addEventListener("click", function () {
@@ -189,7 +155,6 @@
             turn = "X";
             document.getElementById("turn").innerHTML = `Now it's is ${turn} turn`;
         }
-
 
     </script>
 
