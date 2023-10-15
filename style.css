@@ -65,6 +65,16 @@ body {
     border-radius: 70px;
 }
 
+#Tic-Tac-Toe_link{
+    margin-right: 55px;
+    border-radius: 70px;
+}
+
+#weather_link{
+    margin-right: 65px;
+    border-radius: 70px;
+}
+
 .transition-button {
     background-color: yellow; 
     padding: 5px 5px; 
