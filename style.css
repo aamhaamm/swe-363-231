@@ -32,6 +32,22 @@
     }
 }
 
+
+/* The Canvas 3D*/
+
+body { margin: 0; }
+canvas { display: block; }
+#screensaver { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 9999; 
+    display: none; 
+}
+
+
 /*  The header in index.html */
 
 body {
@@ -61,17 +77,17 @@ body {
 
 
 #experience_link , #experience_link_ar{
-    margin-right: 45px;
+    margin-right: 25px;
     border-radius: 70px;
 }
 
 #Tic-Tac-Toe_link{
-    margin-right: 55px;
+    margin-right: 25px;
     border-radius: 70px;
 }
 
-#weather_link{
-    margin-right: 65px;
+#Weather_link{
+    margin-right: 25px;
     border-radius: 70px;
 }
 
@@ -86,7 +102,7 @@ body {
   }
 
 #contact_link , #contact_link_ar{
-    margin-right: 35px;
+    margin-right: 25px;
     border-radius: 70px;
 }
 
