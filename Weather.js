@@ -1,4 +1,11 @@
-const API_KEY = '72669bc34bcf456c89b80dc264a9f234';
+const API_KEY = '';
+
+class City {
+    constructor(name, fullName) {
+        this.name = name;
+        this.fullName = fullName;
+    }
+}
 
 function fetchCitySuggestions() {
     const query = document.getElementById('cityInput').value;
@@ -12,11 +19,14 @@ function fetchCitySuggestions() {
     .then(data => {
         const suggestionsBox = document.getElementById('suggestions');
         suggestionsBox.innerHTML = '';
-        data._embedded['city:search-results'].forEach(city => {
+        const cities = [];
+        data._embedded['city:search-results'].forEach(cityData => {
+            const city = new City(cityData.matching_full_name.split(',')[0], cityData.matching_full_name);
+            cities.push(city);
             const p = document.createElement('p');
-            p.textContent = city.matching_full_name;
+            p.textContent = city.fullName;
             p.onclick = function() {
-                document.getElementById('cityInput').value = city.matching_full_name.split(',')[0];
+                document.getElementById('cityInput').value = city.name;
                 suggestionsBox.style.display = 'none';
             };
             suggestionsBox.appendChild(p);
