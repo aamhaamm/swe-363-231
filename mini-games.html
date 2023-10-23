@@ -8,72 +8,71 @@
     <title>Tic Tac Toe</title>
 
     <style>
-    body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f5f5f5;
-    font-family: 'Shantell Sans', cursive;
-    }
-
-    h1 {
-        margin-bottom: 10px;
-        color: #4a4a4a;
-    }
-
-    p {
-        margin-top: 5px;
-        color: #7a7a7a;
-    }
-
-    .cell {
-        font-size: larger;
-        font-weight: 500;
-        background-color: #ffffff;
-        width: 100px;
-        height: 100px;
-        border: 2px solid red;
-        border-radius: 12px;
-        text-align: center;
+        body {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-    }
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f5f5f5;
+        font-family: 'Shantell Sans', cursive;
+        }
 
-    .cell:hover {
-        background-color: #f0f0f0;
-    }
+        h1 {
+            margin-bottom: 10px;
+            color: #4a4a4a;
+        }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        gap: 5px;
-    }
+        p {
+            margin-top: 5px;
+            color: #7a7a7a;
+        }
 
-    code {
-        color: #d05ce3;
-    }
+        .cell {
+            font-size: larger;
+            font-weight: 500;
+            background-color: #ffffff;
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-    #reset-btn {
-        background-color: #673ab7;
-        color: white;
-        border-radius: 12px;
-        padding: 10px 25px;
-        margin-top: 20px;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease-in-out;
-    }
+        .cell:hover {
+            background-color: #f0f0f0;
+        }
 
-    #reset-btn:hover {
-        background-color: #9575cd;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 5px;
+        }
 
+        code {
+            color: #d05ce3;
+        }
+
+        #reset-btn {
+            background-color: #673ab7;
+            color: white;
+            border-radius: 12px;
+            padding: 10px 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #reset-btn:hover {
+            background-color: #9575cd;
+        }
     </style>
 </head>
 
@@ -96,26 +95,15 @@
     <button id="reset-btn">Reset</button>
 
     <script>
-        let gridItems = document.getElementsByClassName("cell");
+        const gridItems = document.getElementsByClassName("cell");
         let turn = "X";
         let isFinished = false;
         let boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
-        for (const item of gridItems) {
-            item.addEventListener("keydown", function (e) {
-                if (e.key === " ") {
-                    handleTurn(item);
-                }
-            });
-            item.addEventListener("click", function () {
-                handleTurn(item);
-            });
-        }
-
-        function handleTurn(item) {
+        const handleTurn = (item) => {
             if (isFinished || item.innerHTML !== "") return;
             item.style.background = 'blanchedalmond';
-            let value = item.getAttribute("value");
+            const value = item.getAttribute("value");
             item.innerHTML = turn;
             boardArray[value - 1] = turn;
             checkWinner();
@@ -123,11 +111,13 @@
                 turn = turn === "X" ? "O" : "X";
                 document.getElementById("turn").textContent = `Now it's is ${turn} turn`;
             }
-        }
+        };
 
-        function checkWinner() {
-            let turnLetter = document.getElementById("turn");
-            if (checkLine(0, 1, 2) || checkLine(3, 4, 5) || checkLine(6, 7, 8) || checkLine(0, 3, 6) || checkLine(1, 4, 7) || checkLine(2, 5, 8) || checkLine(0, 4, 8) || checkLine(2, 4, 6)) {
+        const checkWinner = () => {
+            const turnLetter = document.getElementById("turn");
+            const checkLine = (a, b, c) => boardArray[a] === turn && boardArray[b] === turn && boardArray[c] === turn;
+
+            if ([checkLine(0, 1, 2), checkLine(3, 4, 5), checkLine(6, 7, 8), checkLine(0, 3, 6), checkLine(1, 4, 7), checkLine(2, 5, 8), checkLine(0, 4, 8), checkLine(2, 4, 6)].some(Boolean)) {
                 turnLetter.innerHTML = `The Winner is ${turn}`;
                 isFinished = true;
             }
@@ -135,30 +125,29 @@
                 isFinished = true;
                 turnLetter.innerHTML = "Draw";
             }
-        }
+        };
 
-        function checkLine(a, b, c) {
-            return boardArray[a] === turn && boardArray[b] === turn && boardArray[c] === turn;
-        }
-
-        document.getElementById("reset-btn").addEventListener("click", function () {
-            resetGame();
-        });
-
-        function resetGame() {
-            for (const item of gridItems) {
+        const resetGame = () => {
+            Array.from(gridItems).forEach(item => {
                 item.innerHTML = "";
                 item.style.background = 'beige';
-            }
+            });
             boardArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
             isFinished = false;
             turn = "X";
             document.getElementById("turn").innerHTML = `Now it's is ${turn} turn`;
-        }
+        };
 
+        Array.from(gridItems).forEach(item => {
+            item.addEventListener("keydown", (e) => {
+                if (e.key === " ") handleTurn(item);
+            });
+            item.addEventListener("click", () => handleTurn(item));
+        });
+
+        document.getElementById("reset-btn").addEventListener("click", resetGame);
     </script>
 
 </body>
 
 </html>
-
