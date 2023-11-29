@@ -9,8 +9,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/contact", (req, res) => {
+app.get("/Contact", (req, res) => {
   res.sendFile(path.join(__dirname, "Contact.html"));
+});
+
+app.get("/Experience", (req, res) => {
+  res.sendFile(path.join(__dirname, "Experience.html"));
 });
 
 // ... other routes for additional pages
